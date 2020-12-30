@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var kunkun = {
+        //     type: '学生',
+        //     age: 20,
+        //     girl: {
+        //         name: '石原里美'
+        //     }
+        // }
+        // var maomao = {};// 注意: 必须是空对象结构
+        // // 需求: 把坤坤的内容拷贝给懋懋
+        // Object.assign(maomao,kunkun);
+        // // 对懋懋做修改
+        // maomao.type = '渣男';// 值引用,不会互相影响
+        // maomao.girl.name = '王昊';// 地址引用,所以会互相影响
+        // console.log(maomao);
+        // console.log(kunkun);
+        // 总结对象浅拷贝: 如果是属性拷贝,那么是值引用.如果拷贝的成员是对象,那么就是地址引用
+  
+        var kunkun = {
+          type: "学生",
+          age: 20,
+          girl: {
+            name: "石原里美",
+          },
+          color: ["pink", "red"],
+          say: function () {
+            console.log("哈哈哈");
+          },
+        };
+        var maomao = {};
+  
+        // 封装深拷贝函数(递归拷贝)
+        // 把旧对象 深拷贝给 新对象
+        //   function deepCopy(newObj, oldObj) {
+        //     // 利用forin遍历老对象
+        //     for (var k in oldObj) {
+        //       // 判断老对象中的数据是否有
+        //       // 数组
+        //       var item = oldObj[k]; // 先获得老对象的中数据
+        //       if (item instanceof Array) {
+        //         newObj[k] = []; // 给新对象准备一个空数组
+        //         deepCopy(newObj[k], item);
+        //       } else if (item instanceof Function) {
+        //         // 函数,那么直接复制即可
+        //         newObj[k] = item;
+        //       }else if (item instanceof Object) {
+        //         // 对象
+        //         newObj[k] = {}; // 给新对象准备一个空对象
+        //         deepCopy(newObj[k], item);
+        //       } else {
+        //         // 简单数据
+        //         newObj[k] = item;
+        //       }
+        //     }
+        //   }
+  
+        //   deepCopy(maomao, kunkun);
+        //   maomao.type = '渣男';
+        //   maomao.girl.name = '王昊';
+        //   maomao.say = function () {
+        //       console.log('嘿嘿嘿');
+        //   }
+        //   maomao.say();
+        //   kunkun.say();
+        //   console.log(maomao);
+        //   console.log(kunkun);
+        // 总结深拷贝: 利用递归函数,如果遇到的复杂数据类型,则内部继续遍历复制,所有的数据就不会互相影响
+  
+        // 拓展: 丐版深拷贝, 可以支持多层对象,数组
+        // 但是,函数不行
+        var kunkun = {
+            a: 1,
+            b: 2,
+            c: 3,
+            d: [1,2,3],
+            e: {
+                name:'石原里美'
+            }
+        }
+        var maomao = {};
+        var str = JSON.stringify(kunkun);
+        maomao = JSON.parse(str);
+        kunkun.a = 100;
+        kunkun.d[0] = 100;
+        kunkun.e.name = '王昊';
+        console.log(maomao);
+      </script>
+</body>
+</html>
