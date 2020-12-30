@@ -36,14 +36,19 @@
   </div
   <!-- 第二行的按钮区域 -->
   <div class="row2">
-    <button type="button" class="layui-btn">上传</button>
-    <button type="button" class="layui-btn layui-btn-danger">确定</button>
+      <!-- 通过accept 属性，可以指定，允许用户选择什么类型的文件 -->
+    <input type="file" id="file" accept="image/*" style="display: none;"/>
+    <button type="button" id="btnChooseImage" class="layui-btn">上传</button>
+    <button type="button" id="btnUpload" class="layui-btn layui-btn-danger">确定</button>
   </div>
       </div>
     </div>
+    <script src="/assets/lib/layui/layui.all.js"></script>
     <script src="/assets/lib/jquery.js"></script>
+
 <script src="/assets/lib/cropper/Cropper.js"></script>
 <script src="/assets/lib/cropper/jquery-cropper.js"></script>
+<script src="/assets/js/baseAPI.js"></script>
 <script src="/assets/js/user_avatar.js"></script>
   </body>
 </html>
